@@ -9,3 +9,14 @@
  */
 
 //TODO fill in content
+#include "../includes/scheduler_SRTF.h"
+
+
+	bool  Scheduler_SRTF::time_to_switch_processes(int tick_count, PCB &p){
+
+	}
+
+	//SRTF-preemptive - sort ready_q by remaining_cpu_time whenever add(PCB p) or time_to_switch_processes is called
+	void Scheduler_SRTF::sort(){
+
+	}
