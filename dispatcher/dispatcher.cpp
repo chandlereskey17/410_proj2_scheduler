@@ -9,18 +9,16 @@
 
 #include "../includes/dispatcher.h"
 
-
-
 	//pull current process (if any) off CPU and return it
 	//if nothing on CPU returns an uninitialized PCB
 	PCB Dispatcher::get_from_CPU(){
-		PCB p;
-		return p;
+		return cpu->get_process_off_core();
 	}
 
 	//place the current process on the CPU for execution
 	void Dispatcher::put_on_CPU(PCB  &process){
-//		CPU::put_process_on_core(process);
+		cpu->get_process_off_core();
+		cpu->put_process_on_core(process);
 	}
 
 	//is CPU idle or working
