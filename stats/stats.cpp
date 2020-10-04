@@ -12,7 +12,7 @@
 		av_turnaround_time = 0.0;
 		av_response_time = 0.0;
 		av_wait_time = 0.0;
-		vec = NULL;
+		vec = &finished_vector;
 	}
 
 	//loops thru vec, prints 1 line for each process using the following format

@@ -13,7 +13,7 @@
 
 	//override base class behaviour if necessary, otherwise call it
 	bool  Scheduler_RR::time_to_switch_processes(int tick_count, PCB &p){
-		return true;
+		return Scheduler::time_to_switch_processes(tick_count, p);
 	}
 
 	//RR - preemptive - no sorting of ready_q needed.
