@@ -9,9 +9,9 @@
 #include "../includes/stats.h"
 
 	Stats::Stats(std::vector<PCB> &finished_vector){
-		av_turnaround_time = 0.0;
-		av_response_time = 0.0;
-		av_wait_time = 0.0;
+		av_turnaround_time = 0;
+		av_response_time = 0;
+		av_wait_time = 0;
 		vec = &finished_vector;
 	}
 
@@ -45,14 +45,15 @@
 	//wait time per process = finish_time - arrival_time-required_CPU_time
 	//this funtion returns the average over all processes
 	float Stats::get_av_wait_time(){
+		calcStats();
 		return av_wait_time;
 	}
 
 	//does the work (only needs to run once)
 	void Stats::calcStats(){
-		int temp_response = 0;
-		int temp_turnaround = 0;
-		int temp_wait = 0;
+		float temp_response = 0;
+		float temp_turnaround = 0;
+		float temp_wait = 0;
 		for (int i = 0; i < vec->size(); i++){
 			temp_response += vec->at(i).start_time - vec->at(i).arrival_time;
 			temp_turnaround += vec->at(i).finish_time - vec->at(i).arrival_time;

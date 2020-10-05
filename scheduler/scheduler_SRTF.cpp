@@ -14,7 +14,7 @@
 #include <vector>
 
 	bool sort_by_cpu(PCB &a, PCB &b) {
-		return a.remaining_cpu_time > b.remaining_cpu_time;
+		return a.remaining_cpu_time < b.remaining_cpu_time;
 	}
 
 	//override base class behaviour if necessary, otherwise call it
@@ -25,6 +25,7 @@
 
 	//SRTF-preemptive - sort ready_q by remaining_cpu_time whenever add(PCB p) or time_to_switch_processes is called
 	void Scheduler_SRTF::sort(){
+		preemptive = true;
 		std::vector<PCB> temp_vec;
 		while (!ready_q->empty()){
 			temp_vec.push_back(ready_q->front());

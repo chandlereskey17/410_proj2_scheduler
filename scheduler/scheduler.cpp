@@ -17,14 +17,19 @@
 
 	//get next process
 	PCB Scheduler::getNext(){
+		if (isEmpty()){
+			PCB empty;
+			return empty;
+		}
+		PCB next = ready_q->front();
 		ready_q->pop();
-		return ready_q->front();
+		return next;
 	}
 
 	//returns true if there are no  jobs in the readyQ
 	//false otherwise
 	bool Scheduler::isEmpty(){
-		return ready_q->size() == 0;
+		return ready_q->empty();
 	}
 
 	//if process has completed (used all its remaining_cpu_time) or
@@ -34,7 +39,8 @@
 	//true - switch processes
 	//false - do not switch
 	bool   Scheduler::time_to_switch_processes(int tick_count, PCB &p){
-		return (p.remaining_cpu_time == 0 || (preemptive && tick_count > time_slice));
+		sort();
+		return (p.remaining_cpu_time <= 0 || (preemptive && tick_count > time_slice));
 	}
 
 

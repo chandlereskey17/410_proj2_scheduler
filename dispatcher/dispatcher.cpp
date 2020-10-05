@@ -13,12 +13,13 @@
 	//if nothing on CPU returns an uninitialized PCB
 	PCB Dispatcher::get_from_CPU(){
 		PCB returned = cpu->get_process_off_core();
-		is_valid_job_on_cpu = returned.process_number != UNINITIALIZED;
+		is_valid_job_on_cpu = returned.process_number == UNINITIALIZED;
 		return returned;
 	}
 
 	//place the current process on the CPU for execution
 	void Dispatcher::put_on_CPU(PCB  &process){
+		cpu->get_process_off_core();
 		cpu->put_process_on_core(process);
 		is_valid_job_on_cpu = true;
 	}
