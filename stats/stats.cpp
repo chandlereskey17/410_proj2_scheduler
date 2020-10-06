@@ -29,6 +29,7 @@
 	//response_time per process = start_time - arrival_time
 	//this funtion returns the average over all processes
 	float Stats::get_av_response_time(){
+		calcStats();
 		return av_response_time;
 	}
 
@@ -37,6 +38,7 @@
 	//turnaround time per process = finish_time - arrival_time
 	//this funtion returns the average over all processes
 	float Stats::get_av_turnaround_time(){
+		calcStats();
 		return av_turnaround_time;
 	}
 

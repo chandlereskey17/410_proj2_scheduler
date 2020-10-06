@@ -40,7 +40,7 @@
 	//false - do not switch
 	bool   Scheduler::time_to_switch_processes(int tick_count, PCB &p){
 		sort();
-		return (p.remaining_cpu_time <= 0 || (preemptive && tick_count > time_slice));
+		return (p.remaining_cpu_time <= 0 || (preemptive && tick_count - p.start_time >= time_slice));
 	}
 
 
